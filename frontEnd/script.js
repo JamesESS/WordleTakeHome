@@ -26,28 +26,26 @@ function makeTile(i,tagName,className,parent) {
 }
 
 const wordURL = "https://qgxxfd5hoh.execute-api.eu-west-2.amazonaws.com/DEV/getword";
-fetch(wordURL)
-.then(response => response.json())
-.then(result => {
-    let todaysWord = result.Items[0].word.S;
-    let wordArr = todaysWord.split("");
-    console.log(wordArr);
-    if (wordArr.length != 5) console.error("incorrect word length!");
-    wordArr.forEach((letter,i) => {
-        // const letterContainer = document.createElement("p");
-        // letterContainer.textContent = letter;
-        // letterContainer.classList.add("letter");
-        // letterContainer.style.color = "white";
-        // document.getElementById("playBoard").childNodes[6].childNodes[i].appendChild(letterContainer);
-        document.getElementById("playBoard").childNodes[6].childNodes[i].textContent = letter;
-  });
-})
 
+const getWord = () => {
+    fetch(wordURL)
+    .then(response => response.json())
+    .then(result => {
+        let todaysWord = result.Items[0].word.S;
+        let wordArr = todaysWord.split("");
+        if (wordArr.length != 5) console.error("incorrect word length!");
+        wordArr.forEach((letter,i) => {
+            document.getElementById("playBoard").childNodes[6].childNodes[i].textContent = letter;
+      });
+    })
+}
+getWord();
 
 const updateWord = () => {
     fetch(wordURL, {
         method: "POST"
     })
+    .then(() => getWord())
 }
 
 document.getElementById("updateWord").addEventListener("click",updateWord)
