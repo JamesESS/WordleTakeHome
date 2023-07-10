@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    cursor: default;
+  }
+body {
+    background-color: black;
+    color: cornsilk;
+}
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    text-decoration: underline;
+}
+.gameContainer {
+    padding-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.playBoard {
+    display: grid;
+    grid-auto-flow: row;
+    background-color: black;
+    width: fit-content;
+    height: max-content;
+}
+
+.row {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0.6rem;
+    padding: 0.6rem;
+}
+
+.row:last-child {
+    padding-top: 4rem;
+}
+
+.tile {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0.1rem solid grey;
+    box-shadow: 0.1rem 0.1rem 0.1rem darkslategrey;
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    line-height: 2.5rem;
+}
