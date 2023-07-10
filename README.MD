@@ -1,17 +1,18 @@
-# Take home task wordle clone
+# Take home task Wordle clone
 Take-home challenge for Limio
-For this take-home challenge I need to split wordle up in to user stories and choose one of those stories to develop.  
+For this take-home challenge I need to split Wordle up in to user stories and choose one of those stories to develop.  
 I've decided to deal with ever player receiving the same word and getting a new word each day.
 You can see my site [here](https://jamesess.github.io/wordleTakeHome/)
 
-This is **not** a working version of wordle.  
-This project only deals with generating five letter words and serving every player the same word.
+This is **not** a working version of Wordle.  
+This project only deals with generating five letter words and serving every player the same word.  
+As it stands there is very little interactivity for this project. You can see the word of the day and use the update word button to change to a new word for all players.
 
 
 ## User Stories
 
 - as a player I want to 
-    - be able to use my actual keboard or an onscreen keyboard
+    - be able to use my actual keyboard or an onscreen keyboard
     - have clear feedback about which letters in my guess are incorrect so I can adjust my future guesses
     - have clear feedback showing if a letter in my guess is correctly positioned or is in the word but not at that position
     - have a record of which letters I've guessed and if the were correct or not so I don't mistakenly use letters I know are incorrect
@@ -57,7 +58,7 @@ Once that was all up and running I moved over to getting my API and the serveWor
 
 Once all of this was set up I was able to test my API through AWS and see that I get back the word currently stored in my table. After enabling CORS I was able to get the word from a static test site I made.
 
-Then I needed to make my front end site. As I'm only tackling issues [#11(word refresh limit)](https://github.com/JamesESS/wordleTakeHome/issues/11) & [#12(all users get same word)](https://github.com/JamesESS/wordleTakeHome/issues/12) there wasn't too much work I could do on the fron end.
+Then I needed to make my front end site. As I'm only tackling issues [#11(word refresh limit)](https://github.com/JamesESS/wordleTakeHome/issues/11) & [#12(all users get same word)](https://github.com/JamesESS/wordleTakeHome/issues/12) there wasn't too much work I could do on the front end.
 I set up a grid to mimic wordle and at the bottom put an extra row with todays word. I've also added a button to update the word for testing purposes. The word refresh rate is currently 24 hours so I wanted an easy way to get new words and ensure everything was still working as expected.
 
 The testing button meant adding another method to my API I set it up so the POST method would trigger my lambda function.
