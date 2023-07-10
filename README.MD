@@ -49,13 +49,13 @@ Once that was all up and running I moved over to getting my API and the serveWor
 
 Once all of this was set up I was able to test my API through AWS and see that I get back the word currently stored in my table. After enabling CORS I was able to get the word from a static test site I made.
 
-Then I needed to make my front end site.
+Then I needed to make my front end site. As I'm only tackling issues [#11(word refresh limit)](https://github.com/JamesESS/wordleTakeHome/issues/11) & [#12(all users get same word)](https://github.com/JamesESS/wordleTakeHome/issues/12)
 ## Debugging
 I enabled CloudWatch logs for my Lambda functions and my API. There was a lot of sifting through logs
 
 Originally I was using fetch to query the word API but looking through logs for my lambda function I realised this was causing issues. Fetch is a browser API so I needed to change this to use the HTTP method.
 
-I still haven't gotten to the bottom of why my serveWord lambda function isn't working correctly
+I still haven't gotten to the bottom of why my serveWord lambda function isn't working correctly for the time being I've removed the lambda function and api from my codebase.
 
 
 ## Future Improvements
