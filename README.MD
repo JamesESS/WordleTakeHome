@@ -1,6 +1,8 @@
 # Take home task wordle clone
 Take-home challenge for Limio
-For this take-home challenge I need to split wordle up in to user stories and choose one of those stories to develop
+For this take-home challenge I need to split wordle up in to user stories and choose one of those stories to develop.
+I've decided to deal with ever player receiving the same word and getting a new word each day.
+You can see my site [here](https://jamesess.github.io/wordleTakeHome/)
 
 
 ## User Stories
@@ -63,4 +65,7 @@ I still haven't gotten to the bottom of why my serveWord lambda function isn't w
 
 ## Future Improvements
 In the end I've used the AWS site to set up my API Gateway and CloudWatch event trigger. I'd like to try and declare these with terraform so I can build and destroy the entire infrastructure easily.
+
 I'd like to set up a second dynamoDB table to push words to when they get replaced so that I have a reference of what words have already been done in the last x days/months. At that point it might make more sense to change over to Amazon RDS and have a third table with a dictionary to get words from instead of using an external API.
+
+It would be cool to deploy the frontend site using AWS as well instead of github pages
