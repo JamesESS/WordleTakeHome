@@ -1,25 +1,40 @@
 const board = document.createElement("div");
 board.className = "playBoard";
 board.id = "playBoard";
-makeRow(0, "div", "row", board);
+makeRow(7, "div", "row", board);
 document.getElementById("boardContainer").appendChild(board);
 
+/**
+ * creates 
+ * @param {number} i number of elements we want to create
+ * @param {string} tagName string of html tagname 
+ * @param {string} className class to give elements
+ * @param {Node} parent parent element for the 
+ */
 function makeRow(i, tagName, className, parent) {
-  if (i < 7) {
+  if (i > 0) {
     const row = document.createElement(tagName);
     row.className = className;
     parent.appendChild(row);
-    makeTile(0, "p", "tile", row);
-    makeRow(i + 1, tagName, className, parent);
+    makeTile(5, "p", "tile", row);
+    makeRow(i - 1, tagName, className, parent);
   }
 }
 
+
+/**
+ * creates 
+ * @param {number} i number of elements we want to create
+ * @param {string} tagName html tagname for element
+ * @param {string} className class to give elements
+ * @param {Node} parent parent element 
+ */
 function makeTile(i, tagName, className, parent) {
-  if (i < 5) {
+  if (i > 0) {
     const tile = document.createElement(tagName);
     tile.className = className;
     parent.appendChild(tile);
-    makeTile(i + 1, tagName, className, parent);
+    makeTile(i - 1, tagName, className, parent);
   }
 }
 
