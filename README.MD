@@ -1,8 +1,11 @@
 # Take home task wordle clone
 Take-home challenge for Limio
-For this take-home challenge I need to split wordle up in to user stories and choose one of those stories to develop.
+For this take-home challenge I need to split wordle up in to user stories and choose one of those stories to develop.  
 I've decided to deal with ever player receiving the same word and getting a new word each day.
 You can see my site [here](https://jamesess.github.io/wordleTakeHome/)
+
+This is **not** a working version of wordle.  
+This project only deals with generating five letter words and serving every player the same word.
 
 
 ## User Stories
@@ -17,7 +20,6 @@ You can see my site [here](https://jamesess.github.io/wordleTakeHome/)
     - be notified when I've failed to guess the word
     - be notified when I've successfully guessed the word
     - see the correct word if I fail
-    - recieve a new word each time I play so I don't get bored
     - have limitations on how often I can play to help keep the game fresh
 - as a competitive player I want 
     - everyone to get the same word so I can easily compare my results with others
@@ -31,7 +33,11 @@ As this is for a devops role I thought it would be fun to try and tackle
 - as a competitive player I want everyone to get the same word so I can easily compare my results with others
 
 This will give me an opportunity to play around with some of the services AWS offers.
-Ideally I'll make use of Terraform to build my infrastructure
+Ideally I'll make use of Terraform to build my infrastructure.
+In implementing this user story I'll also deal with
+- get a new word each time I play to keep the game interesting
+&
+- have limitations on how often I can play to keep the game fresh
 
 ## Planning
 I knew I'd be using AWS services for this. It was between an s3 bucket or DynamoDB to store the word. I decided to use DynamoDB because I figured it might help with future user story of getting a new word each time if when a word is replaced it get's shifted to another table which stores the last x words used.
