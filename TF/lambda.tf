@@ -9,18 +9,6 @@ resource "aws_lambda_function" "update_word" {
   source_code_hash = filebase64sha256("updateWord.zip")
 }
 
-resource "aws_lambda_function" "serve_word" {
-  filename      = "serveWord.zip"
-  function_name = "serve-word-lambda"
-  role          = aws_iam_role.lambda_role.arn
-  handler       = "serveWord.handler"
-  runtime       = "nodejs14.x"
-  timeout       = 10
-
-  source_code_hash = filebase64sha256("serveWord.zip")
-}
-
-
 resource "aws_iam_role" "lambda_role" {
   name = "lambda-role"
 
@@ -44,14 +32,6 @@ resource "aws_iam_policy_attachment" "lambda_policy_attachment" {
   name       = "lambda-policy-attachment"
   policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
   roles      = [aws_iam_role.lambda_role.name]
-}
-
-
-resource "aws_lambda_permission" "api_gateway_permission" {
-  statement_id  = "AllowAPIGatewayInvoke"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.update_word.function_name
-  principal     = "apigateway.amazonaws.com"
 }
 
 resource "aws_iam_policy_attachment" "cloudwatch_policy_attachment" {
