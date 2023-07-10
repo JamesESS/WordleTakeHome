@@ -1,5 +1,14 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.5"
+    }
+  }
+}
+
 provider "aws" {
-  region = "eu-west-2" # Replace with your desired AWS region
+  region = "eu-west-2"
 }
 
 resource "aws_dynamodb_table" "words" {
