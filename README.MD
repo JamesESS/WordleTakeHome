@@ -49,16 +49,18 @@ Once that was all up and running I moved over to getting my API and the serveWor
 
 Once all of this was set up I was able to test my API through AWS and see that I get back the word currently stored in my table. After enabling CORS I was able to get the word from a static test site I made.
 
-Then I needed to make my front end site. As I'm only tackling issues [#11(word refresh limit)](https://github.com/JamesESS/wordleTakeHome/issues/11) & [#12(all users get same word)](https://github.com/JamesESS/wordleTakeHome/issues/12)
+Then I needed to make my front end site. As I'm only tackling issues [#11(word refresh limit)](https://github.com/JamesESS/wordleTakeHome/issues/11) & [#12(all users get same word)](https://github.com/JamesESS/wordleTakeHome/issues/12) there wasn't too much work I could do on the fron end.
+I set up a grid to mimic wordle and at the bottom put an extra row with todays word. I've also added a button to update the word for testing purposes. The word refresh rate is currently 24 hours so I wanted an easy way to get new words and ensure everything was still working as expected.
+
+The testing button meant adding another method to my API I set it up so the POST method would trigger my lambda function.
 ## Debugging
 I enabled CloudWatch logs for my Lambda functions and my API. There was a lot of sifting through logs
 
 Originally I was using fetch to query the word API but looking through logs for my lambda function I realised this was causing issues. Fetch is a browser API so I needed to change this to use the HTTP method.
 
-I still haven't gotten to the bottom of why my serveWord lambda function isn't working correctly for the time being I've removed the lambda function and api from my codebase.
+I still haven't gotten to the bottom of why my serveWord lambda function isn't working correctly for the time being I've removed the lambda function and api from my codebase. 
 
 
 ## Future Improvements
 In the end I've used the AWS site to set up my API Gateway and CloudWatch event trigger. I'd like to try and declare these with terraform so I can build and destroy the entire infrastructure easily.
-
-I'd like to set up a test button on the front end site which you can use to change the CloudWatch event timer to easily check updateWord is working as expected
+I'd like to set up a second dynamoDB table to push words to when they get replaced so that I have a reference of what words have already been done in the last x days/months. At that point it might make more sense to change over to Amazon RDS and have a third table with a dictionary to get words from instead of using an external API.
